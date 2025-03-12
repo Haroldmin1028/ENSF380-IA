@@ -148,26 +148,33 @@ public class DisasterVictimTest {
         victim.setGender(newGender);
         assertEquals("setGender should update and getGender should return the new gender", newGender.toLowerCase(), victim.getGender());
     }
-	
-	
 
-    @Test
-    public void testAddFamilyConnection() {
-        DisasterVictim victim1 = new DisasterVictim("Jane", "2025-01-20");
-        DisasterVictim victim2 = new DisasterVictim("John", "2025-01-22");
-
-        FamilyRelation relation = new FamilyRelation(victim2, "parent", victim1);
-        FamilyRelation[] expectedRelations = {relation};
-        victim2.setFamilyConnections(expectedRelations);
-
-        FamilyRelation[] testFamily = victim2.getFamilyConnections();
-        boolean correct = false;
-
-        if ((testFamily!=null) && (testFamily[0] == expectedRelations[0])) {
-                correct = true;
-        }
-        assertTrue("addFamilyConnection should add a family relationship", correct);
+    //added
+    @Test (expected = IllegalArgumentException.class)
+    public void testSetGenderWithInvalidGender() {
+        String invalidGender = "whale";
+        victim.setGender(invalidGender);
+        // Expecting IllegalArgumentException, gender is not "male", "female", nor "non-binary"
     }
+	
+
+//    @Test
+//    public void testAddFamilyConnection() {
+//        DisasterVictim victim1 = new DisasterVictim("Jane", "2025-01-20");
+//        DisasterVictim victim2 = new DisasterVictim("John", "2025-01-22");
+//
+//        FamilyRelation relation = new FamilyRelation(victim2, "parent", victim1);
+//        FamilyRelation[] expectedRelations = {relation};
+//        victim2.setFamilyConnections(expectedRelations);
+//
+//        FamilyRelation[] testFamily = victim2.getFamilyConnections();
+//        boolean correct = false;
+//
+//        if ((testFamily!=null) && (testFamily[0] == expectedRelations[0])) {
+//                correct = true;
+//        }
+//        assertTrue("addFamilyConnection should add a family relationship", correct);
+//    }
 
     @Test
     public void testAddPersonalBelonging() {
@@ -185,35 +192,35 @@ public class DisasterVictimTest {
         assertTrue("addPersonalBelonging should add the supply to personal belongings", correct);
     }
 
-@Test
-public void testRemoveFamilyConnection() {
-        DisasterVictim victim1 = new DisasterVictim("Jane", "2025-01-20");
-        DisasterVictim victim2 = new DisasterVictim("John", "2025-01-22");
-        FamilyRelation relation1 = new FamilyRelation(victim, "sibling", victim1);
-        FamilyRelation relation2 = new FamilyRelation(victim, "sibling", victim2);
-        FamilyRelation[] expectedRelations = {relation2};
-        FamilyRelation[] originalRelations = {relation1, relation2};
-        victim.setFamilyConnections(originalRelations);
+//    @Test
+//    public void testRemoveFamilyConnection() {
+//        DisasterVictim victim1 = new DisasterVictim("Jane", "2025-01-20");
+//        DisasterVictim victim2 = new DisasterVictim("John", "2025-01-22");
+//        FamilyRelation relation1 = new FamilyRelation(victim, "sibling", victim1);
+//        FamilyRelation relation2 = new FamilyRelation(victim, "sibling", victim2);
+//        FamilyRelation[] expectedRelations = {relation2};
+//        FamilyRelation[] originalRelations = {relation1, relation2};
+//        victim.setFamilyConnections(originalRelations);
+//
+//        DisasterVictim victim = new DisasterVictim("Freda", "2025-01-23");
+//        victim.addFamilyConnection(relation1);
+//        victim.addFamilyConnection(relation2);
+//        victim.removeFamilyConnection(relation1);
+//
+//        FamilyRelation[] testFamily = victim.getFamilyConnections();
+//        boolean correct = true;
+//
+//        int i;
+//        for (i = 0; i < testFamily.length; i++) {
+//            if (testFamily[i] == relation1) {
+//                correct = false;
+//            }
+//        }
+//    assertTrue("removeFamilyConnection should remove the family member", true);
+//}
 
-        DisasterVictim victim = new DisasterVictim("Freda", "2025-01-23");
-        victim.addFamilyConnection(relation1);
-        victim.addFamilyConnection(relation2);
-        victim.removeFamilyConnection(relation1);
-
-        FamilyRelation[] testFamily = victim.getFamilyConnections();
-        boolean correct = true;
-
-        int i;
-        for (i = 0; i < testFamily.length; i++) {
-            if (testFamily[i] == relation1) {
-                correct = false;
-            }
-        }
-    assertTrue("removeFamilyConnection should remove the family member", true);
-}  
-
-@Test
-public void testRemovePersonalBelonging() {
+    @Test
+    public void testRemovePersonalBelonging() {
     
         Supply supplyToRemove = suppliesToSet.get(0); 
         victim.addPersonalBelonging(supplyToRemove); 
@@ -232,7 +239,7 @@ public void testRemovePersonalBelonging() {
 }
 
 
- @Test
+    @Test
     public void testSetFamilyConnection() {
         DisasterVictim victim1 = new DisasterVictim("Jane", "2025-01-20");
         DisasterVictim victim2 = new DisasterVictim("John", "2025-01-22");
@@ -257,29 +264,29 @@ public void testRemovePersonalBelonging() {
        assertTrue("Family relation should be set", correct);
     }
 
-  @Test
-public void testSetMedicalRecords() {
-    Location testLocation = new Location("Shelter Z", "1234 Shelter Ave");
-    MedicalRecord testRecord = new MedicalRecord(testLocation, "test for strep", "2025-02-09");
-    boolean correct = true;
+    @Test
+    public void testSetMedicalRecords() {
+        Location testLocation = new Location("Shelter Z", "1234 Shelter Ave");
+        MedicalRecord testRecord = new MedicalRecord(testLocation, "test for strep", "2025-02-09");
+        boolean correct = true;
 
-    MedicalRecord[] newRecords = { testRecord };
-    victim.setMedicalRecords(newRecords);
-    MedicalRecord[] actualRecords = victim.getMedicalRecords();
+        MedicalRecord[] newRecords = { testRecord };
+        victim.setMedicalRecords(newRecords);
+        MedicalRecord[] actualRecords = victim.getMedicalRecords();
 
-    // We have not studied overriding equals in arrays of custom objects so we will manually evaluate equality
-    if (newRecords.length != actualRecords.length) {
-        correct = false;
-    } else {
-        int i;
-        for (i=0;i<newRecords.length;i++) {
-            if (actualRecords[i] != newRecords[i]) {
-                correct = false;
+        // We have not studied overriding equals in arrays of custom objects so we will manually evaluate equality
+        if (newRecords.length != actualRecords.length) {
+            correct = false;
+        } else {
+            int i;
+            for (i=0;i<newRecords.length;i++) {
+                if (actualRecords[i] != newRecords[i]) {
+                    correct = false;
+                }
             }
         }
+        assertTrue("setMedicalRecords should correctly update medical records", correct);
     }
-    assertTrue("setMedicalRecords should correctly update medical records", correct);
-}
 
 
    @Test

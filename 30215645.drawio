@@ -1,108 +1,139 @@
-<mxfile host="65bd71144e">
-    <diagram id="VlhHBZpKRhE8tKz5r5HN" name="Page-1">
-        <mxGraphModel dx="817" dy="858" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1920" math="0" shadow="0">
-            <root>
-                <mxCell id="0"/>
-                <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="DisasterVictim" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-                    <mxGeometry x="70" y="340" width="410" height="610" as="geometry">
-                        <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="4" value="- String firstName&#xa;- String lastName&#xa;- String dateOfBirth&#xa;- int ASSIGNED_SOCIAL_ID&#xa;- FamilyRelation[] familyConnections&#xa;- MedicalRecord[] medicalRecords&#xa;- Supply[] personalBelongings&#xa;- String ENTRY_DATE&#xa;- String gender&#xa;- String comments&#xa;- int counter" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="2">
-                    <mxGeometry y="26" width="410" height="168" as="geometry"/>
-                </mxCell>
-                <mxCell id="5" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="2">
-                    <mxGeometry y="194" width="410" height="12" as="geometry"/>
-                </mxCell>
-                <mxCell id="6" value="+DisasterVictim(String firstName, String ENTRY_DATE)&#xa;+DisasterVictim(String firstName, String ENTRY_DATE, String dateOfBirth)&#xa;+String getFirstName()&#xa;+void setFirstName(String firstName)&#xa;+String getLastName()&#xa;+void setLastName(String lastName)&#xa;+String getDateOfBirth()&#xa;+void setDateOfBirth(String dateOfBirth)&#xa;+int getAssignedSocialID()&#xa;+FamilyRelation[] getFamilyConnections()&#xa;+MedicalRecord[] getMedicalRecords()&#xa;+Supply[] getPersonalBelongings()&#xa;+void setFamilyConnections(FamilyRelation[] connections)&#xa;+void setMedicalRecords(MedicalRecord[] records)&#xa;+void setPersonalBelongings(Supply[] belongings)&#xa;+void addPersonalBelonging(Supply supply)&#xa;+void removePersonalBelonging(Supply unwantedSupply)&#xa;+void removeFamilyConnection(FamilyRelation exRelation)&#xa;+void addFamilyConnection(FamilyRelation record)&#xa;+void addMedicalRecord(MedicalRecord record)&#xa;+String getEntryDate()&#xa;+String getComments()&#xa;+void setComments(String comments)&#xa;+String getGender()&#xa;+void setGender(String gender)&#xa;-int generateSocialID()&#xa;-boolean isValidDateFormat(String date)&#xa;-int convertDateStringToInt(String dateStr" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="2">
-                    <mxGeometry y="206" width="410" height="404" as="geometry"/>
-                </mxCell>
-                <mxCell id="10" value="FamilyRelation" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-                    <mxGeometry x="520" y="310" width="510" height="210" as="geometry">
-                        <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="11" value="- DisasterVictim personOne&#xa;- String relationshipTo&#xa;- DisasterVictim personTwo" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="10">
-                    <mxGeometry y="26" width="510" height="54" as="geometry"/>
-                </mxCell>
-                <mxCell id="12" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="10">
-                    <mxGeometry y="80" width="510" height="12" as="geometry"/>
-                </mxCell>
-                <mxCell id="13" value="+FamilyRelation(DisasterVictim personOne, String relationshipTo, DisasterVictim personTwo)&#xa;+DisasterVictim getPersonOne()&#xa;+void setPersonOne(DisasterVictim personOne)&#xa;+String getRelationshipTo()&#xa;+void setRelationshipTo(String relationshipTo)&#xa;+DisasterVictim getPersonTwo()&#xa;+void setPersonTwo(DisasterVictim personTwo)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="10">
-                    <mxGeometry y="92" width="510" height="118" as="geometry"/>
-                </mxCell>
-                <mxCell id="14" value="Location" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-                    <mxGeometry x="100" y="1030" width="280" height="310" as="geometry">
-                        <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="15" value="- String name&#xa;- String address&#xa;- DisasterVictim[] occupants&#xa;- Supply[] supplies&#xa;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="14">
-                    <mxGeometry y="26" width="280" height="64" as="geometry"/>
-                </mxCell>
-                <mxCell id="16" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="14">
-                    <mxGeometry y="90" width="280" height="12" as="geometry"/>
-                </mxCell>
-                <mxCell id="17" value="+Location(String name, String address)&#xa;+String getName()&#xa;+void setName(String name)&#xa;+String getAddress()&#xa;+void setAddress(String address)&#xa;+DisasterVictim[] getOccupants()&#xa;+void setOccupants(DisasterVictim[] occupants)&#xa;+Supply[] getSupplies()&#xa;+void setSupplies(Supply[] supplies)&#xa;+void addOccupant(DisasterVictim occupant)&#xa;+void removeOccupant(DisasterVictim occupant)&#xa;+void addSupply(Supply supply)&#xa;+void addSupply(Supply supply)&#xa;+void removeSupply(Supply supply" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="14">
-                    <mxGeometry y="102" width="280" height="208" as="geometry"/>
-                </mxCell>
-                <mxCell id="18" value="ReliefService&#xa;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-                    <mxGeometry x="660" y="1060" width="730" height="310" as="geometry">
-                        <mxRectangle x="660" y="1060" width="160" height="26" as="alternateBounds"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="19" value="- Inquirer inquirer&#xa;- DisasterVictim missingPerson&#xa;- String dateOfInquiry&#xa;- String infoProvided&#xa;- Location lastKnownLocation" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="18">
-                    <mxGeometry y="26" width="730" height="74" as="geometry"/>
-                </mxCell>
-                <mxCell id="20" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="18">
-                    <mxGeometry y="100" width="730" height="12" as="geometry"/>
-                </mxCell>
-                <mxCell id="21" value="+ReliefService(Inquirer inquirer, DisasterVictim missingPerson, String dateOfInquiry, String infoProvided, Location lastKnownLocation)&#xa;+Inquirer getInquirer()&#xa;+void setInquirer(Inquirer inquirer)&#xa;+DisasterVictim getMissingPerson()&#xa;+void setMissingPerson(DisasterVictim missingPerson)&#xa;+String getDateOfInquiry()&#xa;+void setDateOfInquiry(String dateOfInquiry)&#xa;+String getInfoProvided()&#xa;+void setInfoProvided(String infoProvided)&#xa;+Location getLastKnownLocation()&#xa;+void setLastKnownLocation(Location lastKnownLocation)&#xa;-boolean isValidDateFormat(String date)&#xa;+String getLogDetails()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="18">
-                    <mxGeometry y="112" width="730" height="198" as="geometry"/>
-                </mxCell>
-                <mxCell id="26" value="Inquirer" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-                    <mxGeometry x="1170" y="310" width="380" height="190" as="geometry">
-                        <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="27" value="- String FIRST_NAME&#xa;- String LAST_NAME&#xa;- String INFO&#xa;- String SERVICES_PHONE" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="26">
-                    <mxGeometry y="26" width="380" height="64" as="geometry"/>
-                </mxCell>
-                <mxCell id="28" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="26">
-                    <mxGeometry y="90" width="380" height="12" as="geometry"/>
-                </mxCell>
-                <mxCell id="29" value="+Inquirer(String firstName, String lastName, String phone, String info)&#xa;+String getFirstName()&#xa;+String getLastName()&#xa;+String getServicesPhoneNum()&#xa;+String getInfo()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="26">
-                    <mxGeometry y="102" width="380" height="88" as="geometry"/>
-                </mxCell>
-                <mxCell id="30" value="Supply" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-                    <mxGeometry x="590" y="710" width="190" height="160" as="geometry">
-                        <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="31" value="- String type&#xa;- int quantity" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="30">
-                    <mxGeometry y="26" width="190" height="34" as="geometry"/>
-                </mxCell>
-                <mxCell id="32" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="30">
-                    <mxGeometry y="60" width="190" height="12" as="geometry"/>
-                </mxCell>
-                <mxCell id="33" value="+Supply(String type, int quantity)&#xa;+String getType()&#xa;+void setType(String type)&#xa;+int getQuantity()&#xa;+void setQuantity(int quantity)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="30">
-                    <mxGeometry y="72" width="190" height="88" as="geometry"/>
-                </mxCell>
-                <mxCell id="38" value="MedicalRecord" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" vertex="1" parent="1">
-                    <mxGeometry x="1040" y="650" width="460" height="220" as="geometry">
-                        <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds"/>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="39" value="- Location location&#xa;- String treatmentDetails&#xa;- String dateOfTreatment" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="38">
-                    <mxGeometry y="26" width="460" height="54" as="geometry"/>
-                </mxCell>
-                <mxCell id="40" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="38">
-                    <mxGeometry y="80" width="460" height="12" as="geometry"/>
-                </mxCell>
-                <mxCell id="41" value="+MedicalRecord(Location location, String treatmentDetails, String dateOfTreatment)&#xa;+Location getLocation()&#xa;+void setLocation(Location location)&#xa;+String getTreatmentDetails()&#xa;+void setTreatmentDetails(String treatmentDetails)&#xa;+String getDateOfTreatment()&#xa;+void setDateOfTreatment(String dateOfTreatment)&#xa;-boolean isValidDateFormat(String date)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" vertex="1" parent="38">
-                    <mxGeometry y="92" width="460" height="118" as="geometry"/>
-                </mxCell>
-            </root>
-        </mxGraphModel>
-    </diagram>
+<mxfile host="drawio-plugin" modified="2025-03-12T03:17:10.577Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="fA-Dze6w5nEeimpqK_ZP" version="22.1.22" type="embed">
+  <diagram id="VlhHBZpKRhE8tKz5r5HN" name="Page-1">
+    <mxGraphModel dx="889" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1920" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="DisasterVictim" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="190" width="410" height="730" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4" value="- String firstName&#xa;- String lastName&#xa;- String dateOfBirth&#xa;- int ASSIGNED_SOCIAL_ID&#xa;- FamilyRelation[] familyConnections&#xa;- MedicalRecord[] medicalRecords&#xa;- Supply[] personalBelongings&#xa;- String ENTRY_DATE&#xa;- String gender&#xa;- String comments&#xa;- int counter" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="2" vertex="1">
+          <mxGeometry y="26" width="410" height="168" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="2" vertex="1">
+          <mxGeometry y="194" width="410" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="+DisasterVictim(String firstName, String ENTRY_DATE)&#xa;+DisasterVictim(String firstName, String ENTRY_DATE, String dateOfBirth)&#xa;+String getFirstName()&#xa;+void setFirstName(String firstName)&#xa;+String getLastName()&#xa;+void setLastName(String lastName)&#xa;+String getDateOfBirth()&#xa;+void setDateOfBirth(String dateOfBirth)&#xa;+int getAssignedSocialID()&#xa;+FamilyRelation[] getFamilyConnections()&#xa;+MedicalRecord[] getMedicalRecords()&#xa;+Supply[] getPersonalBelongings()&#xa;+void setFamilyConnections(FamilyRelation[] connections)&#xa;+void setMedicalRecords(MedicalRecord[] records)&#xa;+void setPersonalBelongings(Supply[] belongings)&#xa;+void addPersonalBelonging(Supply supply)&#xa;+void removePersonalBelonging(Supply unwantedSupply)&#xa;+void removeFamilyConnection(FamilyRelation exRelation)&#xa;+void addFamilyConnection(FamilyRelation record)&#xa;+void addMedicalRecord(MedicalRecord record)&#xa;+String getEntryDate()&#xa;+String getComments()&#xa;+void setComments(String comments)&#xa;+String getGender()&#xa;+void setGender(String gender)&#xa;-int generateSocialID()&#xa;-boolean isValidDateFormat(String date)&#xa;-int convertDateStringToInt(String dateStr)&#xa;&#xa;- boolean isValidGender(String gender)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=1;html=0;strokeColor=#000000;" parent="2" vertex="1">
+          <mxGeometry y="206" width="410" height="524" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="FamilyRelation" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="500" y="600" width="510" height="210" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="11" value="- DisasterVictim personOne&#xa;- String relationshipTo&#xa;- DisasterVictim personTwo" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="10" vertex="1">
+          <mxGeometry y="26" width="510" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="10" vertex="1">
+          <mxGeometry y="80" width="510" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="+FamilyRelation(DisasterVictim personOne, String relationshipTo, DisasterVictim personTwo)&#xa;+DisasterVictim getPersonOne()&#xa;+void setPersonOne(DisasterVictim personOne)&#xa;+String getRelationshipTo()&#xa;+void setRelationshipTo(String relationshipTo)&#xa;+DisasterVictim getPersonTwo()&#xa;+void setPersonTwo(DisasterVictim personTwo)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="10" vertex="1">
+          <mxGeometry y="92" width="510" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="Location" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="100" y="1030" width="280" height="310" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="15" value="- String name&#xa;- String address&#xa;- DisasterVictim[] occupants&#xa;- Supply[] supplies&#xa;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="14" vertex="1">
+          <mxGeometry y="26" width="280" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="14" vertex="1">
+          <mxGeometry y="90" width="280" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="+Location(String name, String address)&#xa;+String getName()&#xa;+void setName(String name)&#xa;+String getAddress()&#xa;+void setAddress(String address)&#xa;+DisasterVictim[] getOccupants()&#xa;+void setOccupants(DisasterVictim[] occupants)&#xa;+Supply[] getSupplies()&#xa;+void setSupplies(Supply[] supplies)&#xa;+void addOccupant(DisasterVictim occupant)&#xa;+void removeOccupant(DisasterVictim occupant)&#xa;+void addSupply(Supply supply)&#xa;+void addSupply(Supply supply)&#xa;+void removeSupply(Supply supply" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="14" vertex="1">
+          <mxGeometry y="102" width="280" height="208" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="ReliefService&#xa;" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="660" y="1060" width="730" height="310" as="geometry">
+            <mxRectangle x="660" y="1060" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="19" value="- Inquirer inquirer&#xa;- DisasterVictim missingPerson&#xa;- String dateOfInquiry&#xa;- String infoProvided&#xa;- Location lastKnownLocation" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="18" vertex="1">
+          <mxGeometry y="26" width="730" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="18" vertex="1">
+          <mxGeometry y="100" width="730" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="+ReliefService(Inquirer inquirer, DisasterVictim missingPerson, String dateOfInquiry, String infoProvided, Location lastKnownLocation)&#xa;+Inquirer getInquirer()&#xa;+void setInquirer(Inquirer inquirer)&#xa;+DisasterVictim getMissingPerson()&#xa;+void setMissingPerson(DisasterVictim missingPerson)&#xa;+String getDateOfInquiry()&#xa;+void setDateOfInquiry(String dateOfInquiry)&#xa;+String getInfoProvided()&#xa;+void setInfoProvided(String infoProvided)&#xa;+Location getLastKnownLocation()&#xa;+void setLastKnownLocation(Location lastKnownLocation)&#xa;-boolean isValidDateFormat(String date)&#xa;+String getLogDetails()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="18" vertex="1">
+          <mxGeometry y="112" width="730" height="198" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="Inquirer" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="1170" y="310" width="380" height="190" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27" value="- String FIRST_NAME&#xa;- String LAST_NAME&#xa;- String INFO&#xa;- String SERVICES_PHONE" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="26" vertex="1">
+          <mxGeometry y="26" width="380" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="26" vertex="1">
+          <mxGeometry y="90" width="380" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="+Inquirer(String firstName, String lastName, String phone, String info)&#xa;+String getFirstName()&#xa;+String getLastName()&#xa;+String getServicesPhoneNum()&#xa;+String getInfo()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="26" vertex="1">
+          <mxGeometry y="102" width="380" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="Supply" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="700" y="850" width="190" height="160" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="31" value="- String type&#xa;- int quantity" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="30" vertex="1">
+          <mxGeometry y="26" width="190" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="30" vertex="1">
+          <mxGeometry y="60" width="190" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="+Supply(String type, int quantity)&#xa;+String getType()&#xa;+void setType(String type)&#xa;+int getQuantity()&#xa;+void setQuantity(int quantity)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="30" vertex="1">
+          <mxGeometry y="72" width="190" height="88" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="MedicalRecord" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="650" width="460" height="220" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="39" value="- Location location&#xa;- String treatmentDetails&#xa;- String dateOfTreatment" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="38" vertex="1">
+          <mxGeometry y="26" width="460" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="40" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="38" vertex="1">
+          <mxGeometry y="80" width="460" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="41" value="+MedicalRecord(Location location, String treatmentDetails, String dateOfTreatment)&#xa;+Location getLocation()&#xa;+void setLocation(Location location)&#xa;+String getTreatmentDetails()&#xa;+void setTreatmentDetails(String treatmentDetails)&#xa;+String getDateOfTreatment()&#xa;+void setDateOfTreatment(String dateOfTreatment)&#xa;-boolean isValidDateFormat(String date)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="38" vertex="1">
+          <mxGeometry y="92" width="460" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="42" value="Abstract Person class&lt;br&gt;DisasterVictim and ExternalInquirer extend from Person&lt;br&gt;&lt;br&gt;Change FamilyRelation to FamilyGroup&lt;br&gt;&lt;br&gt;Change Supply to a superclass or abstract class, each item type is a sublcass: PersonalBelonging, Blanket, Cot, Water" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="310" y="870" width="360" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="43" value="Person" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="50" width="270" height="210" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="44" value="- String firstName&#xa;- String lastName&#xa;- String gender" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="43" vertex="1">
+          <mxGeometry y="26" width="270" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="45" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="43" vertex="1">
+          <mxGeometry y="80" width="270" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="46" value="+Person(String firstName)&#xa;+String getFirstName()&#xa;+void setFirstName(String firstName)&#xa;+String getFirstName()&#xa;+void setFirstName(String firstName)&#xa;+String getFirstName()&#xa;+void setFirstName(String firstName)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="43" vertex="1">
+          <mxGeometry y="92" width="270" height="118" as="geometry" />
+        </mxCell>
+        <mxCell id="47" value="FamilyGroup" style="swimlane;fontStyle=0;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="550" y="360" width="520" height="190" as="geometry">
+            <mxRectangle x="550" y="140" width="160" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48" value="-ArrayList&lt;DisasterVictim&gt; familyMembers" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="47" vertex="1">
+          <mxGeometry y="26" width="520" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="49" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="47" vertex="1">
+          <mxGeometry y="60" width="520" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="50" value="+FamilyGroup(DisasterVictim victim)&#xa;+FamilyGroup(DisasterVictim victimOne, DisasterVictim victimTwo)&#xa;+FamilyGroup(DisasterVictim victimOne, DisasterVictim victimTwo, DisasterVictim victimThree)&#xa;+boolean isFamilyMember(DisasterVictim victim)&#xa;+void addFamilyMember(DisasterVictim victim)&#xa;+void removeFamilyMember(DisasterVictim victim)&#xa;+ArrayList&lt;DisasterVictim&gt; getFamilyMembers()&#xa;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="47" vertex="1">
+          <mxGeometry y="72" width="520" height="118" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
 </mxfile>

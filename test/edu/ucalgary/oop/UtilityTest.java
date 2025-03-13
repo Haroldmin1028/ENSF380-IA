@@ -6,9 +6,7 @@ See LICENSE.txt for more information.
 package edu.ucalgary.oop;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 import java.util.*;
 
 public class UtilityTest {
@@ -67,12 +65,13 @@ public class UtilityTest {
         //Expecting IllegalArgumentException, date is invalid and cannot be parsed into int
     }
 
-
-    @Test
+    @Test //testing using DisasterVictim constructor that uses Utility.generateID()
     public void testGenerateID() {
-        List<String> IDList = new ArrayList<>();
-        DisasterVictim victimOne = new DisasterVictim();
-        DisasterVictim victimTwo = new DisasterVictim();
-
+        DisasterVictim victimOne = new DisasterVictim("Jacob", "2025-08-08");
+        DisasterVictim victimTwo = new DisasterVictim("Nacob", "2025-06-06");
+        DisasterVictim victimThree = new DisasterVictim("Bacob", "2025-07-07");
+        assertNotEquals("IDs should be unique", victimOne.getVictimID(), victimTwo.getVictimID());
+        assertNotEquals("IDs should be unique", victimTwo.getVictimID(), victimThree.getVictimID());
+        assertNotEquals("IDs should be unique", victimThree.getVictimID(), victimOne.getVictimID());
     }
 }

@@ -9,75 +9,38 @@ package edu.ucalgary.oop;
 import java.util.ArrayList;
 
 
-public class DisasterVictim {
-    private static int counter = 0;
-
+public class DisasterVictim extends Person {
     private String firstName;
     private String lastName;
-    private String dateOfBirth;
-    private final int ASSIGNED_SOCIAL_ID;
-    private ArrayList<FamilyRelation> familyConnections = new ArrayList<>();
-    private ArrayList<MedicalRecord> medicalRecords = new ArrayList<>();
-    private Supply[] personalBelongings;
-    private final String ENTRY_DATE;
     private String gender;
+    private String dateOfBirth;
+    private final String VICTIM_ID;
+    private ArrayList<MedicalRecord> medicalRecords = new ArrayList<>();
+    private ArrayList<Supply> personalBelongings;
+    private final String ENTRY_DATE;
     private String comments;
 
     public DisasterVictim(String firstName, String ENTRY_DATE) throws IllegalArgumentException {
-        this.firstName = firstName;
-        if (!isValidDateFormat(ENTRY_DATE)) {
-            throw new IllegalArgumentException("Invalid date format for entry date. Expected format: YYYY-MM-DD");
+        super(firstName);
+        if (Utility.isInvalidDate(ENTRY_DATE)) {
+            throw new IllegalArgumentException("Invalid date for entry date.");
         }
         this.ENTRY_DATE = ENTRY_DATE;
-        this.ASSIGNED_SOCIAL_ID = generateSocialID();
+        this.VICTIM_ID = Utility.generateID();
     }
 
+    // didn't modify fully cuz maybe i don't need this extra constructor that only takes in an extra birthdate?
     public DisasterVictim(String firstName, String ENTRY_DATE, String dateOfBirth) throws IllegalArgumentException {
         this.firstName = firstName;
-        if (!isValidDateFormat(ENTRY_DATE)) {
-            throw new IllegalArgumentException("Invalid date format for entry date. Expected format: YYYY-MM-DD");
+        if (Utility.isInvalidDate(ENTRY_DATE)) {
+            throw new IllegalArgumentException("Invalid date for entry date.");
         }
         this.ENTRY_DATE = ENTRY_DATE;
-        this.ASSIGNED_SOCIAL_ID = generateSocialID();
-        setDateOfBirth(dateOfBirth);
-    }
-
-
-    private static int generateSocialID() {
-        counter++;
-        return counter;
-    }
-
-    private static boolean isValidDateFormat(String date) {
-        String dateFormatPattern = "^\\d{4}-\\d{2}-\\d{2}$";
-        return date.matches(dateFormatPattern);
-    }
-
-    private static int convertDateStringToInt(String dateStr) {
-        // Use regex to remove dashes from the date string
-        String formattedDate = dateStr.replaceAll("-", "");
-        
-        // Convert the formatted string to an integer
-        return Integer.parseInt(formattedDate);
-    }
-
-  
-    // Getters and setters
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.VICTIM_ID = Utility.generateID();
+        if (Utility.isInvalidDate(dateOfBirth)) {
+            throw new IllegalArgumentException("Invalid date for birth date.");
+        }
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getDateOfBirth() {
@@ -85,8 +48,8 @@ public class DisasterVictim {
     }
 
     public void setDateOfBirth(String dateOfBirth) throws IllegalArgumentException {
-        if (!isValidDateFormat(dateOfBirth)) {
-            throw new IllegalArgumentException("Invalid date format for date of birth. Expected format: YYYY-MM-DD");
+        if (Utility.isInvalidDate(dateOfBirth)) {
+            throw new IllegalArgumentException("Invalid date for date of birth.");
         }
 
         // A person cannot be born after entering a centre
@@ -99,13 +62,11 @@ public class DisasterVictim {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getAssignedSocialID() {
-        return ASSIGNED_SOCIAL_ID;
+    public String getVictimID() {
+        return VICTIM_ID;
     }
 
-  public FamilyRelation[] getFamilyConnections() {
-        return familyConnections.toArray(new FamilyRelation[0]);
-    }
+    public FamilyGroup getFamily() {}
 
     public MedicalRecord[] getMedicalRecords() {
         return medicalRecords.toArray(new MedicalRecord[0]);
@@ -115,15 +76,8 @@ public class DisasterVictim {
         return this.personalBelongings;
     }
 
-    // The add and remove methods remain correct.
-    
-    // Correct the setters to accept Lists instead of arrays
-    public void setFamilyConnections(FamilyRelation[] connections) {
-        this.familyConnections.clear();
-        for (FamilyRelation newRecord : connections) {
-            addFamilyConnection(newRecord);
-        }
-    }
+
+
 
     public void setMedicalRecords(MedicalRecord[] records) {
         this.medicalRecords.clear();
@@ -136,59 +90,15 @@ public class DisasterVictim {
         this.personalBelongings = belongings;
     }
 
-    // Add a Supply to personalBelonging
-    public void addPersonalBelonging(Supply supply) {
-
-        if (this.personalBelongings == null) {
-            Supply tmpSupply[] = { supply };
-            this.setPersonalBelongings(tmpSupply);
-            return;
-        }
-
-        // Create an array one larger than the previous array
-        int newLength = this.personalBelongings.length + 1;
-        Supply tmpPersonalBelongings[] = new Supply[newLength];
-
-        // Copy all the items in the current array to the new array
-        int i;
-        for (i=0; i < personalBelongings.length; i++) {
-            tmpPersonalBelongings[i] = this.personalBelongings[i];
-        }
-
-        // Add the new element at the end of the new array
-        tmpPersonalBelongings[i] = supply;
-
-        // Replace the original array with the new array
-        this.personalBelongings = tmpPersonalBelongings;
-    }
-
-    // Remove a Supply from personalBelongings, we assume it only appears once
-    public void removePersonalBelonging(Supply unwantedSupply) {
-        Supply[] updatedBelongings = new Supply[personalBelongings.length-1];
-        int index = 0;
-        int newIndex = index;
-        for (Supply supply : personalBelongings) {
-            if (!supply.equals(unwantedSupply)) {
-                updatedBelongings[newIndex] = supply;
-                newIndex++;
-            }
-            index++;
-        }
-    }
-
-    public void removeFamilyConnection(FamilyRelation exRelation) {
-        familyConnections.remove(exRelation);
-    }
-
-    public void addFamilyConnection(FamilyRelation record) {
-        familyConnections.add(record);
-    }
 
 
-    // Add a MedicalRecord to medicalRecords
+
+
+
     public void addMedicalRecord(MedicalRecord record) {
         medicalRecords.add(record);
     }
+
 
     public String getEntryDate() {
         return ENTRY_DATE;
@@ -201,18 +111,6 @@ public class DisasterVictim {
     public void setComments(String comments) {
         this.comments =  comments;
     }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) throws IllegalArgumentException {
-        if (!gender.matches("(?i)^(male|female|other)$")) {
-            throw new IllegalArgumentException("Invalid gender. Acceptable values are male, female, or other.");
-        }
-        this.gender = gender.toLowerCase(); // Store in a consistent format
-    }
-
    
 }
 

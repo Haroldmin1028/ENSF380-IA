@@ -6,17 +6,36 @@ See LICENSE.txt for more information.
 
 package edu.ucalgary.oop;
 
-public class Supply {
-    private String type;
-    private int quantity;
+public abstract class Supply {
+    private final String SUPPLY_ID;
+    private Allocation allocation;
 
-    public Supply(String type, int quantity) {
-        this.type = type;
-        this.quantity = quantity;
+    public Supply() {
+        this.SUPPLY_ID = Utility.generateID();
     }
 
-    public void setType(String type) { this.type = type; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
-    public String getType() { return this.type; }
-    public int getQuantity() { return this.quantity; }
+    public void allocate(DisasterVictim victim) {
+        if (isNotAllocated()) {
+            this.allocation = new Allocation(victim);
+        }
+    }
+
+    public void allocate(Location location) {
+        if (isNotAllocated()) {
+            this.allocation = new Allocation(location);
+        }
+    }
+
+    public void deallocate() {
+        this.allocation = null;
+    }
+
+    public String getSupplyID() {return SUPPLY_ID;}
+
+    public Allocation getAllocation() {return allocation;}
+
+    boolean isNotAllocated() {
+        return (this.allocation == null);
+    }
+
 }

@@ -6,7 +6,7 @@ public class Water extends Supply {
     //prob add a boolean used variable
 
     public Water(String ALLOCATION_DATE, String expiryDate) throws IllegalArgumentException {
-        super();
+        super("water", null);
         if (Utility.isInvalidDate(ALLOCATION_DATE) || Utility.isInvalidDate(expiryDate)) {
             throw new IllegalArgumentException("Invalid date");
         }
@@ -16,7 +16,10 @@ public class Water extends Supply {
         }
     }
 
-    public boolean isUsed() {return true;};
+    public boolean isUsed() {
+        //fix, or change function completely
+        return true;
+    };
     public String getAllocationDate() {return ALLOCATION_DATE;}
     public String getExpiryDate() {return expiryDate;}
 

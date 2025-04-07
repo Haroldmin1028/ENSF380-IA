@@ -5,11 +5,10 @@ public class Cot extends Supply{
     private String gridLocation;
 
     public Cot(int room, String gridLocation) {
+        super("cot", room + " " + gridLocation);
         this.room = room;
         this.gridLocation = gridLocation;
     }
-
-    public Cot() {super();}
 
     public int getRoom() {return room;}
     public void setRoom(int room) {this.room = room;}

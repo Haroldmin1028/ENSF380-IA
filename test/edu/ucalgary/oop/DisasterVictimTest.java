@@ -9,9 +9,8 @@ package edu.ucalgary.oop;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import java.util.List;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class DisasterVictimTest {
     private DisasterVictim victim;
@@ -44,7 +43,7 @@ public class DisasterVictimTest {
         DisasterVictim victim = new DisasterVictim("Freda", validEntryDate, validBirthdate);
         assertNotNull("Constructor should successfully create an instance with a valid entry date", victim);
         assertEquals("Constructor should set the entry date correctly", validEntryDate, victim.getEntryDate());
-        assertEquals("Constructor should set the birth date correctly", validBirthdate, victim.getDateOfBirth());
+        assertEquals("Constructor should set the birth date correctly", validBirthdate, victim.getBirthDate());
   }
 
     @Test(expected = IllegalArgumentException.class)
@@ -90,7 +89,7 @@ public class DisasterVictimTest {
     public void testSetDateOfBirth() {
         String newDateOfBirth = "1987-05-21";
         victim.setDateOfBirth(newDateOfBirth);
-        assertEquals("setDateOfBirth should correctly update the date of birth", newDateOfBirth, victim.getDateOfBirth());
+        assertEquals("setDateOfBirth should correctly update the date of birth", newDateOfBirth, victim.getBirthDate());
     }
 
     @Test(expected = IllegalArgumentException.class)

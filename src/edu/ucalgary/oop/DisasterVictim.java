@@ -1,116 +1,72 @@
-/*
-Copyright Ann Barcomb and Khawla Shnaikat, 2024-2025
-Licensed under GPL v3
-See LICENSE.txt for more information.
-*/
-
 package edu.ucalgary.oop;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 public class DisasterVictim extends Person {
-    private String firstName;
-    private String lastName;
-    private String gender;
-    private String dateOfBirth;
-    private final String VICTIM_ID;
+    private String birthDate;
+    private Gender gender;
+    private final int VICTIM_ID;
+    private FamilyGroup family;
     private ArrayList<MedicalRecord> medicalRecords = new ArrayList<>();
-    private ArrayList<Supply> personalBelongings;
+    private ArrayList<Supply> supplies;
     private final String ENTRY_DATE;
     private String comments;
+    DatabaseConnector dbConnector = new DatabaseConnector();
 
-    public DisasterVictim(String firstName, String ENTRY_DATE) throws IllegalArgumentException {
-        super(firstName);
-        if (Utility.isInvalidDate(ENTRY_DATE)) {
-            throw new IllegalArgumentException("Invalid date for entry date.");
-        }
+    public DisasterVictim(String firstName, String lastName, String birthDate, Gender gender, String comments, String ENTRY_DATE) throws IllegalArgumentException {
+        super(firstName, lastName);
+        if (Utility.isInvalidDate(ENTRY_DATE)) { throw new IllegalArgumentException("Invalid date for entry date."); }
         this.ENTRY_DATE = ENTRY_DATE;
-        this.VICTIM_ID = Utility.generateID();
+        if (Utility.isInvalidDate(birthDate)) { throw new IllegalArgumentException("Invalid date for date of birth."); }
+        if (Utility.isBirthAfterEntry(ENTRY_DATE, birthDate)) { throw new IllegalArgumentException("Birthdate must be the same as or before entry date"); }
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.comments = comments;
+
+        dbConnector.createConnection();
+        this.VICTIM_ID = dbConnector.insertNewPerson(firstName, lastName, birthDate, gender, comments, null, family.getID());
+        dbConnector.close();
     }
 
-    // didn't modify fully cuz maybe i don't need this extra constructor that only takes in an extra birthdate?
-    public DisasterVictim(String firstName, String ENTRY_DATE, String dateOfBirth) throws IllegalArgumentException {
-        this.firstName = firstName;
-        if (Utility.isInvalidDate(ENTRY_DATE)) {
-            throw new IllegalArgumentException("Invalid date for entry date.");
-        }
-        this.ENTRY_DATE = ENTRY_DATE;
-        this.VICTIM_ID = Utility.generateID();
-        if (Utility.isInvalidDate(dateOfBirth)) {
-            throw new IllegalArgumentException("Invalid date for birth date.");
-        }
-        this.dateOfBirth = dateOfBirth;
+    //function to create a Family for the created Victim
+    public void findFamilyGroup() {
+        //iterate through family groups, c
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
+    public String getBirthDate() { return birthDate; }
+
+    public void setBirthDate(String dateOfBirth) throws IllegalArgumentException {
+        if (Utility.isInvalidDate(dateOfBirth)) { throw new IllegalArgumentException("Invalid date for date of birth."); }
+        if (Utility.isBirthAfterEntry(ENTRY_DATE, dateOfBirth)) { throw new IllegalArgumentException("Birthdate must be the same as or before entry date"); }
+        this.birthDate = dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) throws IllegalArgumentException {
-        if (Utility.isInvalidDate(dateOfBirth)) {
-            throw new IllegalArgumentException("Invalid date for date of birth.");
-        }
+    public Gender getGender() { return gender; }
+    public void setGender(Gender gender) { this.gender = gender; }
 
-        // A person cannot be born after entering a centre
-        int entryDate = convertDateStringToInt(ENTRY_DATE);
-        int birthDate = convertDateStringToInt(dateOfBirth);
-        if (birthDate > entryDate) {
-            throw new IllegalArgumentException("Birthdate must be the same as or before entry date");
-        }
-        
-        this.dateOfBirth = dateOfBirth;
-    }
+    public int getVictimID() { return VICTIM_ID; }
 
-    public String getVictimID() {
-        return VICTIM_ID;
-    }
+    public FamilyGroup getFamily() { return family;}
 
-    public FamilyGroup getFamily() {}
-
-    public MedicalRecord[] getMedicalRecords() {
-        return medicalRecords.toArray(new MedicalRecord[0]);
-    }
-
-    public Supply[] getPersonalBelongings() {
-        return this.personalBelongings;
-    }
-
-
-
-
-    public void setMedicalRecords(MedicalRecord[] records) {
+    public ArrayList<MedicalRecord> getMedicalRecords() { return medicalRecords; }
+    public void setMedicalRecords(ArrayList<MedicalRecord> records) {
         this.medicalRecords.clear();
-        for (MedicalRecord newRecord : records) {
-            addMedicalRecord(newRecord);
-        }
+        for (MedicalRecord newRecord : records) { addMedicalRecord(newRecord); }
+    }
+    public ArrayList<Supply> getSupplies() { return supplies; }
+    public void setSupplies(ArrayList<Supply> belongings) {
+        this.supplies.clear();
+        for (Supply newSupply : belongings) { addSupply(newSupply); }
     }
 
-    public void setPersonalBelongings(Supply[] belongings) {
-        this.personalBelongings = belongings;
-    }
+    public void addMedicalRecord(MedicalRecord record) { medicalRecords.add(record); }
+    public void addSupply(Supply supply) { supplies.add(supply); }
 
+    public String getEntryDate() { return ENTRY_DATE; }
 
-
-
-
-
-    public void addMedicalRecord(MedicalRecord record) {
-        medicalRecords.add(record);
-    }
-
-
-    public String getEntryDate() {
-        return ENTRY_DATE;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments =  comments;
-    }
+    public String getComments() { return comments; }
+    public void setComments(String comments) { this.comments =  comments; }
    
 }
 

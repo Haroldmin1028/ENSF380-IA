@@ -32,24 +32,15 @@ public final class Utility {
         return false;
     }
 
-    public static boolean isInvalidGender(String gender) {
-        ArrayList<String> validGenderList = new ArrayList<>();
-        validGenderList.add("male");
-        validGenderList.add("female");
-        validGenderList.add("non-binary");
-        return !validGenderList.contains(gender.toLowerCase());
-    }
-
-    // not needed?
     public static int convertDateStringToInt(String date) {
         String formattedDate = date.replaceAll("-", "");
         return Integer.parseInt(formattedDate);
     }
 
-    public static String generateID() {
-        int counter = 0; //wrong, just wrote it
-        //ID format: letter code + number
-        //e.g. 3rd DisasterVictim in system: D3
-        return ("D" + counter);
+    public static boolean isBirthAfterEntry(String ENTRY_DATE, String dateOfBirth) {
+        int entryDate = Utility.convertDateStringToInt(ENTRY_DATE);
+        int birthDate = Utility.convertDateStringToInt(dateOfBirth);
+        return (birthDate > entryDate);
     }
+
 }

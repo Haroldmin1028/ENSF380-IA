@@ -4,8 +4,8 @@ public class PersonalBelonging extends Supply{
     private String description;
 
     public PersonalBelonging(DisasterVictim victim, String description) {
-        super();
-        this.allocate(victim);
+        super("personal item", description);
+        allocate(victim);
         this.description = description;
     }
 

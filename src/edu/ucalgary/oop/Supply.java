@@ -1,17 +1,15 @@
-/*
-Copyright Ann Barcomb and Khawla Shnaikat, 2024-2025
-Licensed under GPL v3
-See LICENSE.txt for more information.
-*/
-
 package edu.ucalgary.oop;
 
 public abstract class Supply {
-    private final String SUPPLY_ID;
+    private final int SUPPLY_ID;
+    private final String TYPE;
     private Allocation allocation;
+    DatabaseConnector dbConnector = new DatabaseConnector();
 
-    public Supply() {
-        this.SUPPLY_ID = Utility.generateID();
+    public Supply(String TYPE, String comments) {
+        dbConnector = new DatabaseConnector();
+        this.SUPPLY_ID = dbConnector.insertNewSupply(TYPE, comments);
+        this.TYPE = TYPE;
     }
 
     public void allocate(DisasterVictim victim) {
@@ -30,7 +28,9 @@ public abstract class Supply {
         this.allocation = null;
     }
 
-    public String getSupplyID() {return SUPPLY_ID;}
+    public String getType() { return TYPE; }
+
+    public int getSupplyID() {return SUPPLY_ID;}
 
     public Allocation getAllocation() {return allocation;}
 
